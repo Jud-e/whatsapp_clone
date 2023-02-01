@@ -49,9 +49,7 @@ class _HomePageState extends State<HomePage> {
           ListView.builder(
               itemCount: 1,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text("Communities"),
-                );
+                return Container();
               }),
           SingleChildScrollView(
             child: Column(
@@ -61,6 +59,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Expanded(
                   child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: 15,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
