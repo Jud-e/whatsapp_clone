@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/archived.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,8 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
+          backgroundColor: const Color.fromARGB(255, 3, 167, 148),
+          child: Icon(Icons.abc),
         ),
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 3, 167, 148),
@@ -59,17 +62,23 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
-                  child: Row(
-                    children: const [
-                      Icon(
-                        Icons.abc,
-                        color: Colors.green,
-                      ),
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Text("Archived")
-                    ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Archived()));
+                    },
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.abc,
+                          color: Colors.green,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("Archived")
+                      ],
+                    ),
                   ),
                 ),
                 ...List.generate(15, (index) {
@@ -80,6 +89,7 @@ class _HomePageState extends State<HomePage> {
                       child: Container(
                           decoration: BoxDecoration(
                               color: Colors.amber,
+                              // border: Border.all(color: Colors.green),
                               borderRadius: BorderRadius.circular(50))),
                     ),
                     title: const Text("mkj"),
@@ -90,20 +100,88 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          ListView.builder(
-              itemCount: 15,
-              itemBuilder: (BuildContext context, int index) {
-                return const ListTile(
-                  title: Text("Status"),
-                );
-              }),
-          ListView.builder(
-              itemCount: 15,
-              itemBuilder: (BuildContext context, int index) {
-                return const ListTile(
-                  title: Text("Calls"),
-                );
-              })
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  leading: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.amber,
+                            // border: Border.all(color: Colors.green),
+                            borderRadius: BorderRadius.circular(50))),
+                  ),
+                  title: const Text("My status"),
+                  subtitle: const Text("subtitle"),
+                  trailing: Icon(Icons.more_horiz),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                  child: Text("Recent Updates"),
+                ),
+                ...List.generate(15, (index) {
+                  return ListTile(
+                    leading: SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              // border: Border.all(color: Colors.green),
+                              borderRadius: BorderRadius.circular(50))),
+                    ),
+                    title: const Text("mkj"),
+                    subtitle: const Text("subtitle"),
+                  );
+                })
+              ],
+            ),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  leading: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.amber,
+                            // border: Border.all(color: Colors.green),
+                            borderRadius: BorderRadius.circular(50))),
+                  ),
+                  title: const Text("Create a call link"),
+                  subtitle: const Text("subtitle"),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                  child: Text("Recent"),
+                ),
+                ...List.generate(15, (index) {
+                  return ListTile(
+                    leading: SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              // border: Border.all(color: Colors.green),
+                              borderRadius: BorderRadius.circular(50))),
+                    ),
+                    title: const Text("mkj"),
+                    subtitle: const Text("subtitle"),
+                    trailing: Icon(Icons.call),
+                  );
+                })
+              ],
+            ),
+          ),
         ]),
       ),
     );
