@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +26,9 @@ class _HomePageState extends State<HomePage> {
           ],
           bottom: const TabBar(
               indicatorColor: Colors.white,
-              indicatorPadding: EdgeInsets.all(5),
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 3,
+              // indicatorPadding: EdgeInsets.all(5),
               tabs: [
                 Tab(
                   icon: Icon(Icons.people),
@@ -43,8 +43,49 @@ class _HomePageState extends State<HomePage> {
                   text: "Calls",
                 ),
               ]),
-          elevation: 0,
+          elevation: 2,
         ),
+        body: TabBarView(children: [
+          ListView.builder(
+              itemCount: 1,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text("Communities"),
+                );
+              }),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [Text("data")],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 15,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text("Chats"),
+                        );
+                      }),
+                ),
+              ],
+            ),
+          ),
+          ListView.builder(
+              itemCount: 15,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text("Status"),
+                );
+              }),
+          ListView.builder(
+              itemCount: 15,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text("Calls"),
+                );
+              })
+        ]),
       ),
     );
   }
