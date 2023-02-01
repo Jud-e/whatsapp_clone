@@ -14,6 +14,9 @@ class _HomePageState extends State<HomePage> {
       initialIndex: 2,
       length: 4,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+        ),
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 3, 167, 148),
           title: const Text("WhatsApp"),
@@ -54,34 +57,50 @@ class _HomePageState extends State<HomePage> {
           SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  children: [Text("data")],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+                  child: Row(
+                    children: const [
+                      Icon(
+                        Icons.abc,
+                        color: Colors.green,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Text("Archived")
+                    ],
+                  ),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 15,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text("Chats"),
-                        );
-                      }),
-                ),
+                ...List.generate(15, (index) {
+                  return ListTile(
+                    leading: SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(50))),
+                    ),
+                    title: const Text("mkj"),
+                    subtitle: const Text("subtitle"),
+                    trailing: const Text("10:48am"),
+                  );
+                })
               ],
             ),
           ),
           ListView.builder(
               itemCount: 15,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
+                return const ListTile(
                   title: Text("Status"),
                 );
               }),
           ListView.builder(
               itemCount: 15,
               itemBuilder: (BuildContext context, int index) {
-                return ListTile(
+                return const ListTile(
                   title: Text("Calls"),
                 );
               })
