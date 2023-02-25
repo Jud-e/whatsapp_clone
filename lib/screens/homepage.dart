@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: const Color.fromARGB(255, 3, 167, 148),
-          child: Icon(Icons.abc),
+          child: const Icon(Icons.abc),
         ),
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 3, 167, 148),
@@ -158,9 +158,8 @@ class _HomePageState extends State<HomePage> {
                   title: const Text("Create a call link"),
                   subtitle: const Text("subtitle"),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text("Recent"),
                 ),
                 ...List.generate(15, (index) {
